@@ -118,7 +118,7 @@ Caso tenha dúvidas, siga as instruções interativas e utilize como base a [doc
 ---
 
 
-> ** O nome do`magalu_s3` é um exemplo, certifique-se de colocar o nome do bucket configurado no `rclone config` e que o diretório exista.** 
+> ** O nome do`magalu_s3` é um exemplo, certifique-se de colocar o nome do bucket configurado no `rclone config` e que o diretório exista.** <br>
 > O arquivo `rclone.conf` será salvo automaticamente em:
  ```bash
  
