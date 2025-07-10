@@ -1,2 +1,2 @@
-rclone-python=0.1.22
+rclone-python==0.1.22
 
