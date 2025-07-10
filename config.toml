@@ -1,0 +1,13 @@
+[global]
+s3 = "nome_s3"       
+bucket_dir = "dir" 
+base_dir = "./backups" 
+log_dir = "./logs"     
+instance_file = "./instances.csv"    
+
+[parallel]
+max_parallel = 10                  
+
+[retention]
+retention_local = 3               
+retention_rclone = 7
