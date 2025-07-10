@@ -3,7 +3,7 @@
 
 Este projeto automatiza o backup de bancos PostgreSQL com suporte a **Rclone** e armazenamento em nuvem como o **S3 da MagaluCloud**.
 
----
+
 
 ## 1. Instalação e Configuração Inicial
 
@@ -59,7 +59,7 @@ sudo apt install -y postgresql-16
 sudo apt install -y postgresql-client-16
 ```
 
----
+
 
 ### Permissões (Opcional)
 
@@ -76,7 +76,7 @@ sudo chown -R postgres:postgres [diretório-do-script]
 - Certifique-se de que todos os arquivos de configuração sejam legíveis pelo usuário que executa o script.
 - Use `ls -la` para verificar permissões.
 
----
+
 
 ## 2. Configurando o Rclone
 
@@ -98,12 +98,12 @@ rclone config
 
 Caso tenha dúvidas, siga as instruções interativas e utilize como base a [documentação oficial da Rclone para S3 da MagaluCloud](https://rclone.org/s3/#magalu).
 
----
+
 
 ### Rclone – Cheat Sheet (S3 MagaluCloud)
 
 |Comando|Descrição|
-|---|---|
+|||
 |`rclone config`|Inicia o assistente de configuração interativa|
 |`rclone ls magalu_s3:/meu-bucket`|Lista arquivos no bucket remoto|
 |`rclone lsd magalu_s3:/`|Lista buckets disponíveis|
@@ -115,7 +115,7 @@ Caso tenha dúvidas, siga as instruções interativas e utilize como base a [doc
 |`rclone cat magalu_s3:/bucket/file`|Mostra o conteúdo de um arquivo remoto|
 |`rclone --progress ...`|Adiciona barra de progresso aos comandos|
 
----
+
 
 
 > ** O nome do`magalu_s3` é um exemplo, certifique-se de colocar o nome do S3 configurado no `rclone config`.** <br>
@@ -129,7 +129,7 @@ Caso tenha dúvidas, siga as instruções interativas e utilize como base a [doc
 
 **Importante:** Certifique-se de que o arquivo `rclone.conf` esteja presente no diretório HOME do **usuário que executa o script** (ex: `/var/lib/postgres/.config/rclone/rclone.conf` para o usuário `postgres`).
 
----
+
 
 ## 3. Arquivos de Configuração
 
@@ -155,7 +155,7 @@ retention_rclone = 7             # Dias até exclusão de backups remotos (S3)
 
 > **Importante:** Todos os diretórios devem existir ou serão criados automaticamente. O usuário que executa o script precisa ter **permissão de leitura e escrita** nesses caminhos.
 
----
+
 
 ### `rclone.conf`
 
@@ -166,7 +166,7 @@ Arquivo de configuração do **Rclone**, necessário para autenticação com o S
 
 > Mantenha este arquivo seguro, ele contém credenciais de acesso ao S3.
 
----
+
 
 ### `instances.csv`
 
@@ -181,7 +181,7 @@ data-production,172.0.0.1,5432,masterdba
 
 > **Atenção:** O usuário listado em cada linha **deve existir na instância do PostgreSQL** e **possuir a role `REPLICATION`** para que o backup funcione corretamente.
 
----
+
 
 ### `.pgpass`
 
@@ -234,7 +234,7 @@ Para que o backup funcione corretamente, o servidor PostgreSQL de **origem (de o
 
 > Substitua `192.168.1.100` pelo IP real do servidor onde o script será executado e o `masterdba` com o usuário do seu banco de dados.
 
----
+
 
 ## 4. Automação com Crontab
 
@@ -252,7 +252,7 @@ crontab -e
 
 > **Dica:** Use caminhos absolutos. O ambiente do `cron` é limitado e não carrega `.bashrc`.
 
----
+
 
 
 ## 5. Restaurando Backups
