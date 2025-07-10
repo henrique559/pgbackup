@@ -255,7 +255,7 @@ crontab -e
 ---
 
 
-## 🔄 5. Restaurando Backups
+## 5. Restaurando Backups
 
 1. **Copie o arquivo `.tar.zst` do bucket** configurado via `rclone`:
 
