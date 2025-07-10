@@ -12,8 +12,7 @@ Este projeto automatiza o backup de bancos PostgreSQL com suporte a **Rclone** e
 Faça o download e extração do pacote:
 
 ```bash
-wget git@github.com:henrique559/pgbackup.git
-tar -xvf pg-backup.tar.gz
+git clone git@github.com:henrique559/pgbackup.git
 ```
 
 ### 1.2. Instalação de Dependências
