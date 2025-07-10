@@ -105,17 +105,20 @@ Caso tenha dúvidas, siga as instruções interativas e utilize como base a [doc
 |Comando|Descrição|
 |---|---|
 |`rclone config`|Inicia o assistente de configuração interativa|
-|`rclone ls magalu_s3:meu-bucket`|Lista arquivos no bucket remoto|
-|`rclone lsd magalu_s3:`|Lista buckets disponíveis|
-|`rclone copy local/dir magalu_s3:bucket`|Copia arquivos do local para o S3|
-|`rclone copy magalu_s3:bucket local/dir`|Copia arquivos do S3 para o local|
-|`rclone sync local/dir magalu_s3:bucket`|Sincroniza (apaga do destino o que não existir na origem!)|
-|`rclone delete magalu_s3:bucket/path`|Apaga arquivos/diretórios remotos (perigoso!)|
-|`rclone cat magalu_s3:bucket/file`|Mostra o conteúdo de um arquivo remoto|
+|`rclone ls magalu_s3:/meu-bucket`|Lista arquivos no bucket remoto|
+|`rclone lsd magalu_s3:/`|Lista buckets disponíveis|
+|`rclone mkdir magalu_s3:/novo-bucket`|Cria novo bucket|
+|`rclone copy local/dir magalu_s3:/bucket`|Copia arquivos do local para o S3|
+|`rclone copy magalu_s3:/bucket local/dir`|Copia arquivos do S3 para o local|
+|`rclone sync local/dir magalu_s3:/bucket`|Sincroniza (apaga do destino o que não existir na origem!)|
+|`rclone delete magalu_s3:/bucket/path`|Apaga arquivos/diretórios remotos (perigoso!)|
+|`rclone cat magalu_s3:/bucket/file`|Mostra o conteúdo de um arquivo remoto|
 |`rclone --progress ...`|Adiciona barra de progresso aos comandos|
 
 ---
 
+
+> ** O nome do`magalu_s3` é um exemplo, certifique-se de colocar o nome do bucket configurado no `rclone config` e que o diretório exista.** 
 > O arquivo `rclone.conf` será salvo automaticamente em:
  ```bash
  
