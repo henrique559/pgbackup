@@ -254,8 +254,61 @@ crontab -e
 
 ---
 
+
 ## 5. Restaurando Backups
 
-TODO
+1. **Copie o arquivo `.tar.zst` do bucket** configurado via `rclone`:
+
+   ```bash
+   rclone copy bucket_configurado:/bucket_exemplo/backup.tar.zst .
+   ```
+> Substitua `.` por outro diretório, caso deseje salvar em outro local.
+> Certifique-se que o `bucket_configurado` seja o S3 configurado no rclone, e que o path exista 
+2. **Extraia o backup com `tar` + `zstd`**:
+
+   ```bash
+   tar --zstd -xvf backup.tar.zst -C /caminho/do/destino
+   ```
+
+   * O diretório de destino pode ser:
+
+     * O diretório de dados do PostgreSQL (ex: `/var/lib/postgresql/16/main`)
+     * Ou outro diretório qualquer, desde que seja configurado no `postgresql.conf`.
+
+3. **Ajuste o caminho do diretório de dados no PostgreSQL**:
+
+   * Edite o arquivo de configuração:
+
+     ```bash
+     sudo nano /etc/postgresql/16/main/postgresql.conf
+     ```
+
+   * Altere a linha `data_directory` para o novo caminho (se não estiver usando o padrão).
+
+4. **Corrija permissões e propriedade do diretório de dados restaurado**:
+
+   ```bash
+   sudo chown -R postgres:postgres /caminho/do/destino
+   sudo chmod 700 /caminho/do/destino
+   ```
+
+   > Apenas o usuário `postgres` deve ter acesso ao diretório de dados.
+
+5. **Reinicie o PostgreSQL**:
+
+   ```bash
+   sudo systemctl restart postgresql
+   ```
+
+6. **Possíveis conflitos**:
+
+   * Se ocorrer erro ao iniciar o serviço, pode ser **conflito entre o `postgresql.conf` atual e o backup restaurado**.
+   * Soluções:
+
+     * Copie o `postgresql.conf` do servidor original (onde o backup foi feito) para o novo ambiente.
+     * Se estiver restaurando no mesmo servidor, isso geralmente **não causará problemas**.
+
+
+
 
  
